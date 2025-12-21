@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hastag Nexus Pvt Ltd</title>
+
+<link rel="icon" type="png" href="Images/hastag logo.png">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+    /* ================= NAV ================= */
+:root{
+      --yellow:#FFD600;
+      --black:#111;
+      --white:#fff;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#555;
+      --accent:#f96628;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      
+      background:var(--yellow);
+      color:var(--text);
+    }
+
+    /* ================= HEADER ================= */
+    header{
+      padding:22px 80px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+    }
+
+    .logo img{
+      width:48px;
+    }
+
+    .logo h2{
+      font-size:22px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    /* ================= NAV ================= */
+    nav{
+      background:var(--card);
+      padding:12px 36px;
+      border-radius:40px;
+      display:flex;
+      align-items:center;
+      gap:32px;
+    }
+
+    nav a,
+    .nav-parent{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    nav a:hover,
+    .nav-parent:hover{
+      color:var(--text);
+    }
+
+    .dropdown{
+      position:relative;
+    }
+
+    .nav-parent i{
+      font-size:12px;
+      transition:.3s;
+    }
+
+    .dropdown:hover .nav-parent i{
+      transform:rotate(180deg);
+    }
+
+    .dropdown-content{
+      position:absolute;
+      top:150%;
+      left:0;
+      background:#fff;
+      border-radius:16px;
+      min-width:220px;
+      box-shadow:0 20px 50px rgba(0,0,0,.15);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      transition:.35s;
+      z-index:99;
+      padding:10px 0;
+    }
+
+    .dropdown:hover .dropdown-content{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+
+    .dropdown-content a{
+      display:block;
+      padding:10px 22px;
+      color:var(--muted);
+    }
+
+    .dropdown-content a:hover{
+      background:rgba(0,0,0,.05);
+      color:var(--text);
+    }
+
+button{
+  background: var(--white);
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover{
+  background-color: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+
+    /* ================= HERO ================= */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+     
+    }
+
+    .hero-inner{
+      position:relative;
+      width:80%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+       
+    }
+
+.title-bg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-family:'Pacifico', cursive;
+  font-size:clamp(56px, 14vw, 200px);
+  line-height:1.05;
+
+  max-width:100%;
+  padding:0 5%;
+  overflow:hidden;
+
+  white-space:nowrap;
+  text-align:center;
+
+  color:rgba(0, 0, 0, 0.35);
+  pointer-events:none;
+}
+
+
+    .image-card{
+      width:420px;
+      height:520px;
+      background:#fff;
+      border-radius:220px 220px 40px 40px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
+      position:relative;
+      box-shadow:0 30px 70px rgba(0,0,0,.25);
+      z-index:2;
+    }
+
+    .image-card::before{
+      content:'';
+      position:absolute;
+      width:300px;
+      height:300px;
+      background:#111;
+      border-radius:50%;
+      bottom:-60px;
+    }
+
+    .image-card img{
+      width:300px;
+      z-index:2;
+    }
+
+    .social{
+      position:absolute;
+      width:44px;
+      height:44px;
+      background:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+      animation:float 5s infinite;
+    }
+
+    .ig{top:60px;left:40px}
+    .fb{top:180px;left:10px}
+    .tw{top:40px;right:60px}
+    .yt{top:200px;right:10px}
+    .tt{top:120px;right:80px}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
+/* ================= FORM ================= */
+.form-container{
+  max-width:520px;
+  width:95%;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.form-container h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+}
+
+label{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+input, select{
+  padding:12px;
+  margin-bottom:18px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.form-container button{
+  padding:14px;
+  background:var(--muted);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.form-container button:hover{
+  background:var(--yellow);
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  background:#111;
+  color:#eee;
+  padding:40px 20px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:space-between;
+}
+
+.footer-column{
+  flex:1 1 250px;
+}
+
+.footer-links{
+  list-style:none;
+}
+
+.footer-links li{
+  margin-bottom:10px;
+}
+
+.footer-links a{
+  color:#ccc;
+  text-decoration:none;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  font-size:14px;
+  color:#777;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:1024px){
+  header{padding:20px 40px;}
+  .hero-inner{width:90%;}
+}
+
+@media (max-width:768px){
+  header{padding:16px;}
+  nav{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    display:none;
+    border-radius:0 0 20px 20px;
+  }
+  nav.active{display:flex;}
+  .hamburger{display:flex;}
+  .hero-inner{flex-direction:column;}
+  .image-card{width:300px;height:380px;}
+}
+
+@media (max-width:480px){
+  .image-card{width:260px;height:340px;}
+  .title-bg{font-size:42px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="Images/hastag logo.png" alt="Logo">
+    <h2>Hastag Nexus</h2>
+  </div>
+
+<div class="menu-wrap">
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+      <span class="nav-parent">Services <i class="fas fa-angle-down"></i></span>
+      <div class="dropdown-content">
+        <a href="web.html">Website Development</a>
+        <a href="App.html">App Development</a>
+        <a href="digital.html">Digital Marketing</a>
+        <a href="PR.html">PR Team</a>
+        <a href="content.html">Content as a Service</a>
+        <a href="Graphics.html">Graphic Design</a>
+        <a href="UI.html">UI/UX Design</a>
+      </div>
+    </div>
+
+    <a href="Register.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+
+
+  <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+  
+</header>
+
+<section class="hero">
+  
+  <div class="hero-inner">
+    <h1 class="title-bg">Hastag Nexus</h1>
+
+    <div class="image-card">
+      <img src="Images/Banner_image.png" alt="Banner">
+
+      <div class="social ig"><i class="fa-brands fa-instagram"></i></div>
+      <div class="social fb">f</div>
+      <div class="social tw">𝕏</div>
+      <div class="social yt">▶</div>
+      <div class="social tt">♪</div>
+    </div>
+  </div>
+</section>
+<h1 style="text-align:center;">Become a Member</h1>
+<p style="text-align:center;">Trusted, professional service provider</p>
+
+<div class="form-container">
+  <h2>Client Registration</h2>
+  <form>
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Mobile Number</label>
+    <input type="tel" placeholder="+1 234 567 8900">
+
+    <label>Select Service</label>
+    <select>
+      <option>Choose Service</option>
+      <option>Web Development</option>
+      <option>App Development</option>
+      <option>Digital Marketing</option>
+    </select>
+
+    <button>Register Now</button>
+  </form>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <img src="Images/hastag logo.png" alt="" width="150px" height="150px">
+      
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+       <li><a href="index.html"><i class="fas fa-house"></i>  Home</a></li>
+        <li><a href="services.html"><i class="fas fa-briefcase"></i>  Services</a></li>
+        <li><a href="Register.html"><i class="fas fa-envelope"></i>  Contact Us</a></li>
+        <li><a href="feedback.html"><i class="fas fa-comments"></i>  Feedback</a></li>
+        <li><a href="register.html"><i class="fas fa-user-plus"></i>  Register Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Social Links</h3>
+      <ul class="footer-links">
+       <li><a href="https://www.instagram.com/hastagnexus?igsh=MXlpeTd1a2d0eGFm" class="insta"><i class="fab fa-instagram"></i>  Hastag Nexus</a></li>
+        <li><a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> +91 9600004536</a></li>
+        <li> <a href="mailto:yourmail@example.com" class="mail"><i class="fas fa-envelope"></i> hastagnexus@gmail.com</a></li>
+      
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Hastag Nexus Pvt Ltd. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("mainNav");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  nav.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
